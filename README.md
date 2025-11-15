@@ -81,6 +81,39 @@ npm run lint
 - 8 فئات مختلفة
 - 5 ماركات عالمية (Yamaha, Honda, KTM, Kawasaki, Suzuki)
 
+## 🌐 النشر على Netlify
+
+### النشر السريع (بدون npm محلي)
+
+1. **سجل دخول في Netlify**:
+   - اذهب إلى [netlify.com](https://www.netlify.com)
+   - سجل دخول بحساب GitHub
+
+2. **أضف الموقع**:
+   - اضغط "Add new site" → "Import an existing project"
+   - اختر "Deploy with GitHub"
+   - اختر repository: `Soft99bikes`
+   - اختر الفرع: `claude/soft99bike-store-setup-01UM7JiTywMEjuRCixot8CT5`
+
+3. **إعدادات Build** (تلقائية من netlify.toml):
+   ```
+   Build command: npm run build
+   Publish directory: .next
+   ```
+
+4. **اضغط Deploy!** 🚀
+
+**النتيجة**: ستحصل على رابط مثل `https://soft99bikes.netlify.app`
+
+📖 **دليل مفصل**: راجع [DEPLOYMENT.md](./DEPLOYMENT.md) للمزيد من التفاصيل
+
+## ⚠️ ملاحظات مهمة
+
+- البيانات حالياً تجريبية (Mock Data)
+- لوحة الأدمن تستخدم localStorage (مؤقت)
+- للإنتاج: يُفضل ربط Backend حقيقي
+- تغيير بيانات الدخول الافتراضية (admin/admin123)
+
 ---
 
 صُنع بـ ❤️ لعشاق الدراجات النارية
