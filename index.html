@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soft99bikes - متجر الدراجات النارية</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <button class="back-btn" id="backBtn" style="display: none;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                    رجوع
+                </button>
+                <h1 class="logo">🏍️ Soft99bikes</h1>
+            </div>
+            <div class="breadcrumb" id="breadcrumb"></div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <div class="container">
+            <!-- Home Screen - 4 Main Categories -->
+            <section id="homeScreen" class="screen active">
+                <h2 class="screen-title">اختر القسم المناسب</h2>
+                <div class="main-categories">
+                    <button class="category-card" onclick="navigateTo('spareParts')">
+                        <div class="category-icon">🔧</div>
+                        <h3>قطع الغيار</h3>
+                        <p>قطع غيار أصلية لجميع الماركات</p>
+                    </button>
+
+                    <button class="category-card" onclick="navigateTo('marketplace')">
+                        <div class="category-icon">🏍️</div>
+                        <h3>بيع وشراء الدراجات</h3>
+                        <p>دراجات جديدة ومستعملة للبيع</p>
+                    </button>
+
+                    <button class="category-card" onclick="navigateTo('accessories')">
+                        <div class="category-icon">🎽</div>
+                        <h3>الإكسسوارات والمعدات</h3>
+                        <p>خوذ، قفازات، ملابس وإكسسوارات</p>
+                    </button>
+
+                    <button class="category-card" onclick="navigateTo('services')">
+                        <div class="category-icon">🔨</div>
+                        <h3>الصيانة والخدمات</h3>
+                        <p>ورش صيانة ومراكز خدمة</p>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Spare Parts Screen -->
+            <section id="sparePartsScreen" class="screen">
+                <h2 class="screen-title">قطع الغيار - اختر الشركة المصنعة</h2>
+                <div class="brands-grid" id="brandsGrid"></div>
+            </section>
+
+            <!-- Brand Models Screen -->
+            <section id="brandModelsScreen" class="screen">
+                <h2 class="screen-title" id="brandModelsTitle">اختر موديل الدراجة</h2>
+                <div class="models-grid" id="modelsGrid"></div>
+            </section>
+
+            <!-- Parts List Screen -->
+            <section id="partsListScreen" class="screen">
+                <h2 class="screen-title" id="partsListTitle">قطع الغيار المتاحة</h2>
+                <div class="parts-grid" id="partsGrid"></div>
+            </section>
+
+            <!-- Marketplace Screen -->
+            <section id="marketplaceScreen" class="screen">
+                <h2 class="screen-title">بيع وشراء الدراجات - اختر النوع</h2>
+                <div class="bike-types-grid" id="bikeTypesGrid"></div>
+            </section>
+
+            <!-- Bikes List Screen -->
+            <section id="bikesListScreen" class="screen">
+                <h2 class="screen-title" id="bikesListTitle">الدراجات المتاحة</h2>
+                <div class="bikes-grid" id="bikesGrid"></div>
+            </section>
+
+            <!-- Accessories Screen -->
+            <section id="accessoriesScreen" class="screen">
+                <h2 class="screen-title">الإكسسوارات والمعدات - اختر الفئة</h2>
+                <div class="accessories-categories-grid" id="accessoriesCategoriesGrid"></div>
+            </section>
+
+            <!-- Accessories List Screen -->
+            <section id="accessoriesListScreen" class="screen">
+                <h2 class="screen-title" id="accessoriesListTitle">المنتجات المتاحة</h2>
+                <div class="accessories-grid" id="accessoriesGrid"></div>
+            </section>
+
+            <!-- Services Screen -->
+            <section id="servicesScreen" class="screen">
+                <h2 class="screen-title">الصيانة والخدمات - اختر الخدمة</h2>
+                <div class="services-categories-grid" id="servicesCategoriesGrid"></div>
+            </section>
+
+            <!-- Services List Screen -->
+            <section id="servicesListScreen" class="screen">
+                <h2 class="screen-title" id="servicesListTitle">مقدمو الخدمة</h2>
+                <div class="services-grid" id="servicesGrid"></div>
+            </section>
+        </div>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
