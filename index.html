@@ -3,404 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soft99bikes - متجر الدراجات الاحترافي</title>
+    <title>Soft99bikes - رفع الصور</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <div class="logo">
-                    <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 19C6.10457 19 7 18.1046 7 17C7 15.8954 6.10457 15 5 15C3.89543 15 3 15.8954 3 17C3 18.1046 3.89543 19 5 19Z" stroke="currentColor" stroke-width="2"/>
-                        <path d="M19 19C20.1046 19 21 18.1046 21 17C21 15.8954 20.1046 15 19 15C17.8954 15 17 15.8954 17 17C17 18.1046 17.8954 19 19 19Z" stroke="currentColor" stroke-width="2"/>
-                        <path d="M5 17H9L12 7L15 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M12 7L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <div class="container">
+        <header>
+            <h1>🚴 Soft99bikes</h1>
+            <p>رفع الصور والحصول على رابط مباشر</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-box" id="uploadBox">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
                     </svg>
-                    <span class="logo-text">Soft99bikes</span>
+                    <h2>اسحب الصورة هنا</h2>
+                    <p>أو انقر للاختيار من جهازك</p>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                    <button class="btn-upload" onclick="document.getElementById('fileInput').click()">
+                        اختر صورة
+                    </button>
                 </div>
-                <button class="menu-toggle" id="menuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+            </div>
+
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <h2>الصورة المرفوعة</h2>
+                <div class="image-preview">
+                    <img id="previewImage" src="" alt="Preview">
+                </div>
+
+                <div class="link-section">
+                    <label>الرابط المباشر للصورة:</label>
+                    <div class="link-box">
+                        <input type="text" id="imageLink" readonly>
+                        <button class="btn-copy" onclick="copyLink()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            نسخ
+                        </button>
+                    </div>
+                    <div class="copy-message" id="copyMessage">تم النسخ! ✓</div>
+                </div>
+
+                <button class="btn-new" onclick="resetUpload()">
+                    رفع صورة جديدة
                 </button>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#home" class="active">الرئيسية</a></li>
-                    <li><a href="#products">المنتجات</a></li>
-                    <li><a href="#about">من نحن</a></li>
-                    <li><a href="#contact">اتصل بنا</a></li>
-                </ul>
             </div>
-        </div>
-    </nav>
+        </main>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-overlay"></div>
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="hero-title-main">اكتشف عالم الدراجات</span>
-                    <span class="hero-title-sub">احترافية وجودة لا مثيل لها</span>
-                </h1>
-                <p class="hero-description">
-                    نوفر لك أفضل الدراجات الهوائية بتصاميم عصرية وجودة عالمية.
-                    ابدأ رحلتك نحو حياة صحية ونشطة معنا.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#products" class="btn btn-primary">
-                        تصفح المنتجات
-                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-                            <path d="M15 19L8 12L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </a>
-                    <a href="#about" class="btn btn-secondary">تعرف علينا</a>
-                </div>
-            </div>
-        </div>
-        <div class="hero-scroll">
-            <span>استكشف المزيد</span>
-            <div class="scroll-indicator"></div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M21 12V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3>جودة مضمونة</h3>
-                    <p>جميع منتجاتنا تأتي بضمان شامل وجودة عالمية معتمدة</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
-                            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3>توصيل سريع</h3>
-                    <p>نوصل طلبك في أسرع وقت ممكن إلى باب منزلك</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z" stroke="currentColor" stroke-width="2"/>
-                            <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3>دعم فني</h3>
-                    <p>فريق دعم احترافي متاح دائماً لمساعدتك</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="products" id="products">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">منتجاتنا المميزة</h2>
-                <p class="section-subtitle">اختر من بين أفضل تشكيلة دراجات في المنطقة</p>
-            </div>
-
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-badge">جديد</div>
-                    <div class="product-image">
-                        <div class="product-placeholder">
-                            <svg viewBox="0 0 200 200" fill="none">
-                                <circle cx="50" cy="150" r="30" stroke="#4F46E5" stroke-width="4"/>
-                                <circle cx="150" cy="150" r="30" stroke="#4F46E5" stroke-width="4"/>
-                                <path d="M50 150L70 80L120 120L150 150" stroke="#4F46E5" stroke-width="4" stroke-linecap="round"/>
-                                <path d="M70 80L90 60L110 80" stroke="#4F46E5" stroke-width="4" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">دراجة جبلية احترافية</h3>
-                        <p class="product-description">مثالية للطرق الوعرة والمغامرات الجبلية</p>
-                        <div class="product-features">
-                            <span class="feature-tag">27 سرعة</span>
-                            <span class="feature-tag">إطار ألمنيوم</span>
-                            <span class="feature-tag">فرامل قرصية</span>
-                        </div>
-                        <div class="product-footer">
-                            <span class="product-price">2,499 ريال</span>
-                            <button class="btn-add-cart">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M9 2L7.17 4H3C1.9 4 1 4.9 1 6V20C1 21.1 1.9 22 3 22H21C22.1 22 23 21.1 23 20V6C23 4.9 22.1 4 21 4H16.83L15 2H9Z" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M12 16C14.21 16 16 14.21 16 12C16 9.79 14.21 8 12 8C9.79 8 8 9.79 8 12C8 14.21 9.79 16 12 16Z" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-badge hot">الأكثر مبيعاً</div>
-                    <div class="product-image">
-                        <div class="product-placeholder">
-                            <svg viewBox="0 0 200 200" fill="none">
-                                <circle cx="50" cy="150" r="30" stroke="#10B981" stroke-width="4"/>
-                                <circle cx="150" cy="150" r="30" stroke="#10B981" stroke-width="4"/>
-                                <path d="M50 150L65 90L135 90L150 150" stroke="#10B981" stroke-width="4" stroke-linecap="round"/>
-                                <path d="M80 90L90 60L110 60L120 90" stroke="#10B981" stroke-width="4" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">دراجة مدينة كلاسيكية</h3>
-                        <p class="product-description">تصميم أنيق للتنقل اليومي في المدينة</p>
-                        <div class="product-features">
-                            <span class="feature-tag">7 سرعات</span>
-                            <span class="feature-tag">مقعد مريح</span>
-                            <span class="feature-tag">سلة أمامية</span>
-                        </div>
-                        <div class="product-footer">
-                            <span class="product-price">1,299 ريال</span>
-                            <button class="btn-add-cart">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M9 2L7.17 4H3C1.9 4 1 4.9 1 6V20C1 21.1 1.9 22 3 22H21C22.1 22 23 21.1 23 20V6C23 4.9 22.1 4 21 4H16.83L15 2H9Z" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M12 16C14.21 16 16 14.21 16 12C16 9.79 14.21 8 12 8C9.79 8 8 9.79 8 12C8 14.21 9.79 16 12 16Z" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <div class="product-placeholder">
-                            <svg viewBox="0 0 200 200" fill="none">
-                                <circle cx="50" cy="150" r="30" stroke="#F59E0B" stroke-width="4"/>
-                                <circle cx="150" cy="150" r="30" stroke="#F59E0B" stroke-width="4"/>
-                                <path d="M50 150L80 70L130 100L150 150" stroke="#F59E0B" stroke-width="4" stroke-linecap="round"/>
-                                <path d="M100 70L110 50" stroke="#F59E0B" stroke-width="4" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">دراجة رياضية سريعة</h3>
-                        <p class="product-description">للرياضيين ومحبي السرعة والأداء العالي</p>
-                        <div class="product-features">
-                            <span class="feature-tag">21 سرعة</span>
-                            <span class="feature-tag">خفيفة الوزن</span>
-                            <span class="feature-tag">إطار كربون</span>
-                        </div>
-                        <div class="product-footer">
-                            <span class="product-price">3,799 ريال</span>
-                            <button class="btn-add-cart">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M9 2L7.17 4H3C1.9 4 1 4.9 1 6V20C1 21.1 1.9 22 3 22H21C22.1 22 23 21.1 23 20V6C23 4.9 22.1 4 21 4H16.83L15 2H9Z" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M12 16C14.21 16 16 14.21 16 12C16 9.79 14.21 8 12 8C9.79 8 8 9.79 8 12C8 14.21 9.79 16 12 16Z" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-badge">عرض خاص</div>
-                    <div class="product-image">
-                        <div class="product-placeholder">
-                            <svg viewBox="0 0 200 200" fill="none">
-                                <circle cx="50" cy="150" r="25" stroke="#EC4899" stroke-width="4"/>
-                                <circle cx="130" cy="150" r="25" stroke="#EC4899" stroke-width="4"/>
-                                <path d="M50 150L60 100L110 100L130 150" stroke="#EC4899" stroke-width="4" stroke-linecap="round"/>
-                                <path d="M75 100L80 80L100 80L105 100" stroke="#EC4899" stroke-width="4" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">دراجة أطفال آمنة</h3>
-                        <p class="product-description">مصممة خصيصاً لسلامة وراحة الأطفال</p>
-                        <div class="product-features">
-                            <span class="feature-tag">عجلات تدريب</span>
-                            <span class="feature-tag">مقعد قابل للتعديل</span>
-                            <span class="feature-tag">ألوان زاهية</span>
-                        </div>
-                        <div class="product-footer">
-                            <span class="product-price">599 ريال</span>
-                            <button class="btn-add-cart">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M9 2L7.17 4H3C1.9 4 1 4.9 1 6V20C1 21.1 1.9 22 3 22H21C22.1 22 23 21.1 23 20V6C23 4.9 22.1 4 21 4H16.83L15 2H9Z" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M12 16C14.21 16 16 14.21 16 12C16 9.79 14.21 8 12 8C9.79 8 8 9.79 8 12C8 14.21 9.79 16 12 16Z" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title">من نحن</h2>
-                    <p>Soft99bikes هو متجرك الأول للدراجات الهوائية عالية الجودة. نحن نؤمن بأن ركوب الدراجات ليس مجرد وسيلة نقل، بل هو أسلوب حياة صحي ومستدام.</p>
-                    <p>منذ تأسيسنا، كرسنا جهودنا لتوفير أفضل الدراجات بأسعار تنافسية، مع خدمة عملاء استثنائية ودعم فني متخصص.</p>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">5000+</span>
-                            <span class="stat-label">عميل سعيد</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">200+</span>
-                            <span class="stat-label">نوع دراجة</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">99%</span>
-                            <span class="stat-label">رضا العملاء</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div class="about-placeholder">
-                        <svg viewBox="0 0 300 300" fill="none">
-                            <circle cx="100" cy="220" r="50" stroke="#4F46E5" stroke-width="6"/>
-                            <circle cx="220" cy="220" r="50" stroke="#4F46E5" stroke-width="6"/>
-                            <path d="M100 220L130 120L200 160L220 220" stroke="#4F46E5" stroke-width="6" stroke-linecap="round"/>
-                            <path d="M130 120L150 80L180 100" stroke="#4F46E5" stroke-width="6" stroke-linecap="round"/>
-                            <circle cx="150" cy="80" r="30" stroke="#10B981" stroke-width="4"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">تواصل معنا</h2>
-                <p class="section-subtitle">نحن هنا للإجابة على استفساراتك</p>
-            </div>
-            <div class="contact-content">
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="الاسم الكامل" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="البريد الإلكتروني" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" placeholder="رقم الهاتف" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="رسالتك" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">إرسال الرسالة</button>
-                </form>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="none">
-                                <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="currentColor" stroke-width="2"/>
-                                <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="currentColor" stroke-width="2"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h4>الموقع</h4>
-                            <p>الرياض، المملكة العربية السعودية</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="none">
-                                <path d="M22 16.92V19.92C22.0011 20.1985 21.9441 20.4741 21.8325 20.7293C21.7209 20.9845 21.5573 21.2136 21.3521 21.4018C21.1468 21.5901 20.9046 21.7335 20.6407 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.5856 13.787 20.5341 11.19 18.85C8.77382 17.3147 6.72533 15.2662 5.18999 12.85C3.49997 10.2412 2.44824 7.27097 2.11999 4.17997C2.095 3.90344 2.12787 3.62474 2.21649 3.3616C2.30512 3.09846 2.44756 2.85666 2.63476 2.65162C2.82196 2.44658 3.0498 2.28271 3.30379 2.17052C3.55777 2.05833 3.83233 2.00026 4.10999 1.99997H7.10999C7.5953 1.9952 8.06579 2.16705 8.43376 2.48351C8.80173 2.79996 9.04207 3.23942 9.10999 3.71997C9.23662 4.68004 9.47144 5.6227 9.80999 6.52997C9.94454 6.8879 9.97366 7.27689 9.8939 7.65086C9.81415 8.02482 9.62886 8.36809 9.35999 8.63998L8.08999 9.90997C9.51355 12.4135 11.5864 14.4864 14.09 15.91L15.36 14.64C15.6319 14.3711 15.9751 14.1858 16.3491 14.1061C16.7231 14.0263 17.1121 14.0554 17.47 14.19C18.3773 14.5285 19.3199 14.7634 20.28 14.89C20.7658 14.9585 21.2094 15.2032 21.5265 15.5775C21.8437 15.9518 22.0122 16.4296 22 16.92Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h4>الهاتف</h4>
-                            <p>+966 50 123 4567</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="none">
-                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h4>البريد الإلكتروني</h4>
-                            <p>info@soft99bikes.com</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">
-                        <svg class="logo-icon" viewBox="0 0 24 24" fill="none">
-                            <path d="M5 19C6.10457 19 7 18.1046 7 17C7 15.8954 6.10457 15 5 15C3.89543 15 3 15.8954 3 17C3 18.1046 3.89543 19 5 19Z" stroke="currentColor" stroke-width="2"/>
-                            <path d="M19 19C20.1046 19 21 18.1046 21 17C21 15.8954 20.1046 15 19 15C17.8954 15 17 15.8954 17 17C17 18.1046 17.8954 19 19 19Z" stroke="currentColor" stroke-width="2"/>
-                            <path d="M5 17H9L12 7L15 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                        <span class="logo-text">Soft99bikes</span>
-                    </div>
-                    <p>متجرك الموثوق للدراجات الهوائية</p>
-                </div>
-                <div class="footer-links">
-                    <h4>روابط سريعة</h4>
-                    <ul>
-                        <li><a href="#home">الرئيسية</a></li>
-                        <li><a href="#products">المنتجات</a></li>
-                        <li><a href="#about">من نحن</a></li>
-                        <li><a href="#contact">اتصل بنا</a></li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <h4>تابعنا</h4>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Twitter">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="#fff" stroke-width="2"/>
-                                <circle cx="17.5" cy="6.5" r="1.5" fill="#fff"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Soft99bikes. جميع الحقوق محفوظة.</p>
-            </div>
-        </div>
-    </footer>
+        <footer>
+            <p>© 2024 Soft99bikes - جميع الحقوق محفوظة</p>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
