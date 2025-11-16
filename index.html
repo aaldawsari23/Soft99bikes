@@ -3,114 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soft99bikes - متجر الدراجات النارية</title>
+    <title>سوفت تسعه وتسعين للدراجات الناريه - SoftNinteyNine</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <div class="header-content">
-                <button class="back-btn" id="backBtn" style="display: none;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 18l-6-6 6-6"/>
-                    </svg>
-                    رجوع
-                </button>
-                <h1 class="logo">🏍️ Soft99bikes</h1>
+            <div class="header-top">
+                <div class="logo-section">
+                    <div class="logo-placeholder">
+                        <span class="logo-icon">🏍️</span>
+                    </div>
+                    <div class="store-info">
+                        <h1 class="store-name-ar">سوفت تسعه وتسعين للدراجات الناريه</h1>
+                        <h2 class="store-name-en">SoftNinteyNine</h2>
+                        <p class="store-description">بيع (جديد ومستعمل) + قطع غيار + اكسسوارات + مواقف للإيجار الشهري</p>
+                    </div>
+                </div>
             </div>
-            <div class="breadcrumb" id="breadcrumb"></div>
+
+            <!-- Main Navigation -->
+            <nav class="main-nav">
+                <button class="nav-btn" id="bikesNavBtn">
+                    <span class="nav-icon">🏍️</span>
+                    <span>الدراجات النارية</span>
+                </button>
+                <button class="nav-btn" id="partsNavBtn">
+                    <span class="nav-icon">⚙️</span>
+                    <span>قطع الغيار</span>
+                </button>
+                <button class="nav-btn" id="accessoriesNavBtn">
+                    <span class="nav-icon">🎽</span>
+                    <span>الإكسسوارات</span>
+                </button>
+                <button class="nav-btn" id="parkingNavBtn">
+                    <span class="nav-icon">🅿️</span>
+                    <span>مواقف للإيجار</span>
+                </button>
+            </nav>
+
+            <!-- Chips Container (Hidden by default) -->
+            <div class="chips-container" id="chipsContainer" style="display: none;">
+                <div class="chips-scroll" id="chipsScroll"></div>
+            </div>
         </div>
     </header>
 
     <!-- Main Container -->
     <main class="main-container">
         <div class="container">
-            <!-- Home Screen - 4 Main Categories -->
-            <section id="homeScreen" class="screen active">
-                <h2 class="screen-title">اختر القسم المناسب</h2>
-                <div class="main-categories">
-                    <button class="category-card" onclick="navigateTo('spareParts')">
-                        <div class="category-icon">🔧</div>
-                        <h3>قطع الغيار</h3>
-                        <p>قطع غيار أصلية لجميع الماركات</p>
-                    </button>
-
-                    <button class="category-card" onclick="navigateTo('marketplace')">
-                        <div class="category-icon">🏍️</div>
-                        <h3>بيع وشراء الدراجات</h3>
-                        <p>دراجات جديدة ومستعملة للبيع</p>
-                    </button>
-
-                    <button class="category-card" onclick="navigateTo('accessories')">
-                        <div class="category-icon">🎽</div>
-                        <h3>الإكسسوارات والمعدات</h3>
-                        <p>خوذ، قفازات، ملابس وإكسسوارات</p>
-                    </button>
-
-                    <button class="category-card" onclick="navigateTo('services')">
-                        <div class="category-icon">🔨</div>
-                        <h3>الصيانة والخدمات</h3>
-                        <p>ورش صيانة ومراكز خدمة</p>
-                    </button>
+            <!-- Welcome Screen -->
+            <section id="welcomeScreen" class="screen active">
+                <div class="welcome-content">
+                    <h2 class="welcome-title">مرحباً بك في سوفت 99</h2>
+                    <p class="welcome-text">اختر من القائمة أعلاه لتصفح منتجاتنا وخدماتنا</p>
+                    <div class="welcome-features">
+                        <div class="feature-card">
+                            <span class="feature-icon">✨</span>
+                            <h3>منتجات أصلية</h3>
+                            <p>جميع منتجاتنا أصلية ومضمونة</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🚚</span>
+                            <h3>خدمة ممتازة</h3>
+                            <p>نحرص على رضاك التام</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">💰</span>
+                            <h3>أسعار تنافسية</h3>
+                            <p>أفضل الأسعار في السوق</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <!-- Spare Parts Screen -->
-            <section id="sparePartsScreen" class="screen">
-                <h2 class="screen-title">قطع الغيار - اختر الشركة المصنعة</h2>
-                <div class="brands-grid" id="brandsGrid"></div>
+            <!-- Products Screen -->
+            <section id="productsScreen" class="screen">
+                <!-- Advanced Filters (Collapsed by default) -->
+                <div class="filters-section">
+                    <button class="filters-toggle-btn" id="filtersToggleBtn">
+                        <span>تصفية متقدمة</span>
+                        <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+
+                    <div class="filters-panel" id="filtersPanel" style="display: none;">
+                        <div class="filter-group">
+                            <label>البحث</label>
+                            <input type="text" id="searchInput" placeholder="ابحث عن منتج...">
+                        </div>
+
+                        <div class="filter-group">
+                            <label>النوع</label>
+                            <select id="typeFilter">
+                                <option value="">الكل</option>
+                                <option value="bikes">دراجات نارية</option>
+                                <option value="parts">قطع غيار</option>
+                                <option value="accessories">إكسسوارات</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>الفئة</label>
+                            <select id="categoryFilter">
+                                <option value="">كل الفئات</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>الماركة</label>
+                            <select id="brandFilter">
+                                <option value="">كل الماركات</option>
+                                <option value="yamaha">Yamaha</option>
+                                <option value="honda">Honda</option>
+                                <option value="ktm">KTM</option>
+                                <option value="kawasaki">Kawasaki</option>
+                                <option value="suzuki">Suzuki</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>حالة التوفر</label>
+                            <select id="availabilityFilter">
+                                <option value="">الكل</option>
+                                <option value="available">متوفر</option>
+                                <option value="unavailable">غير متوفر</option>
+                            </select>
+                        </div>
+
+                        <button class="reset-filters-btn" id="resetFiltersBtn">إعادة تعيين الفلاتر</button>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid" id="productsGrid"></div>
             </section>
 
-            <!-- Brand Models Screen -->
-            <section id="brandModelsScreen" class="screen">
-                <h2 class="screen-title" id="brandModelsTitle">اختر موديل الدراجة</h2>
-                <div class="models-grid" id="modelsGrid"></div>
-            </section>
+            <!-- Parking Screen -->
+            <section id="parkingScreen" class="screen">
+                <div class="parking-content">
+                    <h2 class="parking-title">🅿️ مواقف آمنة للإيجار</h2>
 
-            <!-- Parts List Screen -->
-            <section id="partsListScreen" class="screen">
-                <h2 class="screen-title" id="partsListTitle">قطع الغيار المتاحة</h2>
-                <div class="parts-grid" id="partsGrid"></div>
-            </section>
+                    <div class="parking-info">
+                        <div class="pricing-section">
+                            <h3>الأسعار</h3>
+                            <div class="price-card">
+                                <span class="price-label">السعر اليومي:</span>
+                                <span class="price-value">يرجى الاستفسار</span>
+                            </div>
+                            <div class="price-card">
+                                <span class="price-label">السعر الأسبوعي:</span>
+                                <span class="price-value">يرجى الاستفسار</span>
+                            </div>
+                            <div class="price-card">
+                                <span class="price-label">السعر الشهري:</span>
+                                <span class="price-value">يرجى الاستفسار</span>
+                            </div>
+                        </div>
 
-            <!-- Marketplace Screen -->
-            <section id="marketplaceScreen" class="screen">
-                <h2 class="screen-title">بيع وشراء الدراجات - اختر النوع</h2>
-                <div class="bike-types-grid" id="bikeTypesGrid"></div>
-            </section>
+                        <div class="contact-section">
+                            <h3>للاستفسار والحجز</h3>
+                            <p>يرجى التواصل معنا عبر الواتساب:</p>
+                            <div class="contact-buttons">
+                                <a href="https://wa.me/966568663381" class="whatsapp-btn" target="_blank">
+                                    📱 إبراهيم عسيري: 0568663381
+                                </a>
+                                <a href="https://wa.me/966580874790" class="whatsapp-btn" target="_blank">
+                                    📱 حسين سهيل: 0580874790
+                                </a>
+                            </div>
+                        </div>
 
-            <!-- Bikes List Screen -->
-            <section id="bikesListScreen" class="screen">
-                <h2 class="screen-title" id="bikesListTitle">الدراجات المتاحة</h2>
-                <div class="bikes-grid" id="bikesGrid"></div>
-            </section>
-
-            <!-- Accessories Screen -->
-            <section id="accessoriesScreen" class="screen">
-                <h2 class="screen-title">الإكسسوارات والمعدات - اختر الفئة</h2>
-                <div class="accessories-categories-grid" id="accessoriesCategoriesGrid"></div>
-            </section>
-
-            <!-- Accessories List Screen -->
-            <section id="accessoriesListScreen" class="screen">
-                <h2 class="screen-title" id="accessoriesListTitle">المنتجات المتاحة</h2>
-                <div class="accessories-grid" id="accessoriesGrid"></div>
-            </section>
-
-            <!-- Services Screen -->
-            <section id="servicesScreen" class="screen">
-                <h2 class="screen-title">الصيانة والخدمات - اختر الخدمة</h2>
-                <div class="services-categories-grid" id="servicesCategoriesGrid"></div>
-            </section>
-
-            <!-- Services List Screen -->
-            <section id="servicesListScreen" class="screen">
-                <h2 class="screen-title" id="servicesListTitle">مقدمو الخدمة</h2>
-                <div class="services-grid" id="servicesGrid"></div>
+                        <div class="terms-section">
+                            <h3>الشروط والأحكام</h3>
+                            <ul>
+                                <li>أوقات عمل المحل لاستلام وتسليم الدراجات: يومياً من 5:30 عصراً حتى 3:00 فجراً</li>
+                                <li>يجب إحضار أوراق الدراجة الثبوتية</li>
+                                <li>المواقف مؤمنة ومراقبة</li>
+                                <li>الدفع مقدماً للفترة المتفق عليها</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h3>معلومات التواصل</h3>
+                    <ul class="contact-list">
+                        <li>📱 إبراهيم عسيري: <a href="tel:0568663381">0568663381</a></li>
+                        <li>📱 حسين سهيل: <a href="tel:0580874790">0580874790</a></li>
+                    </ul>
+                </div>
+
+                <!-- Working Hours -->
+                <div class="footer-section">
+                    <h3>أوقات العمل</h3>
+                    <p>يومياً من 5:30 عصراً حتى 3:00 فجراً</p>
+                </div>
+
+                <!-- Location -->
+                <div class="footer-section">
+                    <h3>الموقع</h3>
+                    <p>📍 جيزان، بجوار مستشفى العميس، المملكة العربية السعودية</p>
+                    <a href="https://maps.app.goo.gl/t6pyLPj52d18BaPH6?g_st=ipc" target="_blank" class="map-link">
+                        عرض على الخريطة
+                    </a>
+                </div>
+
+                <!-- Social Media -->
+                <div class="footer-section">
+                    <h3>تابعنا على</h3>
+                    <a href="https://snapchat.com/add/h5jk6" target="_blank" class="social-link">
+                        <span class="snapchat-icon">👻</span> Snapchat: h5jk6
+                    </a>
+                </div>
+            </div>
+
+            <!-- Developer Info -->
+            <div class="footer-bottom">
+                <p>© 2025 Abdulkarim Aldawsari</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="data.js"></script>
     <script src="script.js"></script>
